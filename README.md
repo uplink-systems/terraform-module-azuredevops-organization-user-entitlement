@@ -11,17 +11,6 @@ Some prerequisites needs to be fullfilled to work correctly:
 * The Azure DevOps organisation must already be connected to an Entra ID directory. This is required to use Entra ID based authentication and user enrollment to make use e.g. central user management and securiy feature like IP-based Entra ID conditional access policies.  
 * Billing must be configured for Azure DevOps organisations with more than 5 Basic access level users.  
 
-#### Tasks & ToDos
-
-- [x] Get AzDO-related groups from a connected Microsoft Entra directory
-- [x] Build (flattened) user list from the AzDO-related groups
-- [x] Create and manage a user entitlement for all affected users.
-- [x] \(Optional) Apply input variable validation rules if necessary to match available resource values
-- [x] \(Optional) Apply input variable validation rules if necessary to match the business standards
-- [x] Create and manage modules outputs
-- [x] Document module with README.md
-- [ ] \(Optional) Review code regularly for possible improvements and updates
-
 #### How does it work?
 
 Using *azuread_group* data source the module initially gets the attributes for the groups from Azure AD to process. The data source *azuread_user* gets all users attributes for each groups' members. Finally, *azuredevops_user_entitlement* enrolls each Azure AD user into the AzDO organization with at least the default *basic*-license (if not other license is specified).  
@@ -34,9 +23,9 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
-| <a name="requirement_azuredevops"></a> [microsoft\/azuredevops](#requirement\_azuredevops) | ~> 1.4 |
-| <a name="requirement_azurerm"></a> [hashicorp\/azuread](#requirement\_azuread) | ~> 3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
+| <a name="requirement_azuredevops"></a> [microsoft\/azuredevops](#requirement\_azuredevops) | ~> 1.6 |
+| <a name="requirement_azurerm"></a> [hashicorp\/azuread](#requirement\_azuread) | ~> 3.1 |
 
 ### Resources
 
@@ -60,13 +49,9 @@ Needless to say, but of course the Azure AD **groups** that shall be processed *
 
 ### Known Issues
 
-<details>
-<summary><b>n/a</b></summary>
-
-######
+Known issues are documented with the GitHub repo's issues functionality. Please filter the issues by **Types** and select **Known Issue** to get the appropriate issues and read the results carefully before using the module to avoid negative impacts on your infrastructure.  
   
-</details>
-
+<a name="known_issues"></a> [list of Known Issues](https://github.com/uplink-systems/terraform-module-azuredevops-organization-user-entitlement/issues?q=type%3A%22known%20issue%22)
 ### Sources
 
 This module was thankfully kind of \"forked\", inspired by and customized to my business needs from:  
